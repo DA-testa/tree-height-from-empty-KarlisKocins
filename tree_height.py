@@ -6,10 +6,10 @@ def compute_height(n, parents):
     # Aprēķināt koka augstumu
 
     # Izveidot masīvu, kurā saglabāt katra mezgla augstumu, inicializēts ar 0
-    heights = np.zeros(n, dtype=int)
+    heights = np.zeros(int(n), dtype=int)
 
     # Atrast katra mezgla augstumu
-    for i in range(n):
+    for i in range(int(n)):
         if parents[i] == -1:
             # Ja mezgls ir sakne, tā augstums ir 1.
             heights[i] = 1
@@ -23,11 +23,11 @@ def compute_height(n, parents):
 
 def main():
     # Lasīt ievades datus
-    n = input().strip()
-    parents = np.array(list(map(int, input().strip().split())))
+    n = input()
+    parents = np.array(list(map(int, input().split())))
 
     # Aprēķināt koka augstumu
-    height = compute_height(int(n), parents)
+    height = compute_height(n, parents)
 
     # Drukāt koka augstumu
     print(height)
