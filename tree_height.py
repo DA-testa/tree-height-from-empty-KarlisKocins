@@ -23,8 +23,8 @@ def compute_height(n, parents):
 
 def main():
     # Lasīt ievades datus
-    n = input()
-    parents = np.array(list(map(int, input().split())))
+    n = input().strip()
+    parents = np.array(list(map(int, input().strip().split())))
 
     # Aprēķināt koka augstumu
     height = compute_height(int(n), parents)
