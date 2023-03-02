@@ -21,11 +21,11 @@ def compute_height(n, parents):
 def main():
     # Lasīt ievades datus
     n = input().strip()
-    n1 = int(float(n))
+    n = int(n)
     parents = np.array(list(map(int, input().split())))
 
     # Aprēķināt koka augstumu
-    height = compute_height(n1, parents)
+    height = compute_height(n, parents)
 
     # Drukāt koka augstumu
     print(height)
