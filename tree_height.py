@@ -19,13 +19,21 @@ def compute_height(n, parents):
     return int(np.max(heights))
 
 def main():
-    # Lasīt ievades datus
-    n = input().strip()
-    n = int(n)
-    parents = np.array(list(map(int, input().split())))
+    choice = input("F or I: ")
 
-    # Aprēķināt koka augstumu
-    height = compute_height(n, parents)
+    if "I" in choice or "i" in choice:
+        # Lasīt ievades datus
+        n = int(input("Count: "))
+        parents = list(map(int, input("Nodes: ").split()))
+        # Aprēķināt koka augstumu
+        height = compute_height(n, parents)
+
+    elif "F" in choice or "f" in choice:
+        test_numurs = input("Ievadi testa numuru no 1 - 25: ")
+        with open(f"test/{test_numurs}", "r") as file:
+            n = int(file.readline().strip())
+            parents = list(map(int, file.readline().strip().split()))
+            height = compute_height(n, parents)
 
     # Drukāt koka augstumu
     print(height)
