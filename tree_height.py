@@ -20,7 +20,7 @@ def compute_height(n, parents):
 
 def main():
     # Lasīt ievades datus
-    n = input()
+    n = input().strip()
     n1 = int(n)
     parents = np.array(list(map(int, input().split())))
 
