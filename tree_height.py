@@ -1,5 +1,3 @@
-# python3
-
 import sys
 import threading
 import numpy as np
@@ -25,11 +23,11 @@ def compute_height(n, parents):
 
 def main():
     # Lasīt ievades datus
-    n = int(input())
+    n = input()
     parents = np.array(list(map(int, input().split())))
 
     # Aprēķināt koka augstumu
-    height = compute_height(n, parents)
+    height = compute_height(int(n), parents)
 
     # Drukāt koka augstumu
     print(height)
