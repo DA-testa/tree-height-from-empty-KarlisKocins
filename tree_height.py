@@ -21,7 +21,7 @@ def compute_height(n, parents):
 def main():
     # Lasīt ievades datus
     n = input().strip()
-    n1 = int(n)
+    n1 = (int(n) * 100) / 100
     parents = np.array(list(map(int, input().split())))
 
     # Aprēķināt koka augstumu
