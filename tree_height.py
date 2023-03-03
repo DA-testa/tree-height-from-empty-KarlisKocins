@@ -1,5 +1,5 @@
 # python3
-
+#Autors Kārlis Kociņš 16.Grupa
 import sys
 import threading
 import numpy as np
