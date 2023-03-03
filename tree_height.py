@@ -3,20 +3,34 @@
 import sys
 import threading
 import numpy as np
+
 def compute_height(n, parents):
-    # Aprēķināt koka augstumu
-    # Izveidot masīvu, kurā saglabāt katra mezgla augstumu, inicializēts ar 0
-    heights = np.zeros(n, dtype=int)
-    # Atrast katra mezgla augstumu
-    for i in range(n):
-        if parents[i] == -1:
-            # Ja mezgls ir sakne, tā augstums ir 1.
-            heights[i] = 1
+    # Convert parents array to numpy array for easy indexing
+    parents = np.array(parents)
+
+    # Initialize an array to store the depth of each node
+    depths = np.zeros(n, dtype=int)
+
+    # Define a helper function to recursively compute the depth of each node
+    def compute_depth(node):
+        # If this node's depth has already been computed, return it
+        if depths[node] != 0:
+            return depths[node]
+
+        # Compute the depth of the parent node recursively
+        if parents[node] == -1:
+            depths[node] = 1
         else:
-            # Ja mezglam ir vecāks, pie vecāka augstuma pieskaita 2.
-            heights[i] = heights[parents[i]] + 2
-    # Koka augstums ir visu mezglu maksimālais augstums.
-    return int(np.max(heights))
+            depths[node] = 1 + compute_depth(parents[node])
+
+        return depths[node]
+
+    # Compute the depth of each node
+    for i in range(n):
+        compute_depth(i)
+
+    # Return the maximum depth
+    return np.max(depths)
 
 def main():
     choice = input("F or I: ")
@@ -37,6 +51,7 @@ def main():
 
     # Drukāt koka augstumu
     print(height)
+
 # In Python, the default limit on recursion depth is rather low,
 # so raise it here for this problem. Note that to take advantage
 # of bigger stack, we have to launch the computation in a new thread.
